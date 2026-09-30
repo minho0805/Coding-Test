@@ -5,22 +5,18 @@ class Solution {
 
         List<Integer> numsList = new ArrayList<>();
 
-        for (int i = 0; i < nums.length; i++) {
-            if (!numsList.contains(nums[i])) {
-                numsList.add(nums[i]);
+        for (int num : nums) {
+            numsList.add(num);
+        }
+
+        for (int i = 0; i < numsList.size() - 1; i++) {
+            if (numsList.get(i).equals(numsList.get(i + 1))) {
+                numsList.remove(i + 1);
+                i--; 
             }
         }
-        int select = nums.length / 2;
 
-        int answer;
-
-        if (numsList.size() < select) {
-            answer = numsList.size();
-        } 
-        else {
-            answer = select;
-        }
-
+        int answer = numsList.size();
         return answer;
     }
 }
